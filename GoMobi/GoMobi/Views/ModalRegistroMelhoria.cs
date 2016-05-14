@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace GoMobi.Views
 {
@@ -13,12 +7,13 @@ namespace GoMobi.Views
         public ModalRegistroMelhoria()
         {
             Title = "Registro Positivo";
+            BackgroundColor = Color.FromHex("#455A64");
             var lblDescricao = new Label
             {
                 Text = "Descrição:",
                 FontSize = Device.GetNamedSize(NamedSize.Default, typeof(Label)),
                 FontAttributes = FontAttributes.Bold,
-                TextColor = Color.Accent
+                TextColor = Color.White
             };
             var etrDescricao = new Entry
             {

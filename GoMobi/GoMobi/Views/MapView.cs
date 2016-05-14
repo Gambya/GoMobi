@@ -19,12 +19,6 @@ namespace GoMobi.Views
             NavigationPage.SetTitleIcon(this, icon);
             NavigationPage.SetHasBackButton(this, false);
 
-            //Carregar localização
-            //Task.Factory.StartNew(GetPosition).ContinueWith((i) =>
-            //{
-            //    posicao = new Position(i.Result.Result.Latitude, i.Result.Result.Longitude);
-            //});
-
             //Layout principal
             var relativeLayoutMain = new RelativeLayout();
             //Mapa

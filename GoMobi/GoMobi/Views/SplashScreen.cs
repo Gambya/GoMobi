@@ -1,4 +1,6 @@
-﻿using Plugin.Geolocator;
+﻿using System;
+using System.Threading.Tasks;
+using Plugin.Geolocator;
 using Xamarin.Forms;
 
 namespace GoMobi.Views
@@ -33,7 +35,7 @@ namespace GoMobi.Views
             var posicion = await locator.GetPositionAsync(1000000000);
             Application.Current.Properties["latitude"] = posicion.Latitude;
             Application.Current.Properties["longitude"] = posicion.Longitude;
-            //Task.Delay(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(5));
             await Navigation.PopModalAsync(true);
             await Navigation.PushAsync(new LoginView(), true);
             base.OnAppearing();

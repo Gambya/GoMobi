@@ -35,12 +35,21 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Entities\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Acessibilidade.cs" />
+    <Compile Include="Entities\EntityBase.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Object Values\Email.cs" />
+    <Compile Include="Object Values\Photo.cs" />
+    <Compile Include="Object Values\TipoAcessibilidade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IAcessibilidadeRepository.cs" />
+    <Compile Include="Repositories\IRepositoryBase.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\IAcessibilidadeService.cs" />
+    <Compile Include="Services\IServiceBase.cs" />
+    <Compile Include="Services\IUserService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
