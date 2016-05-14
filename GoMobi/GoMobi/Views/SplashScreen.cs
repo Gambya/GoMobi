@@ -7,7 +7,7 @@ namespace GoMobi.Views
     {
         public SplashScreen()
         {
-            var relativeLayoutMain = new RelativeLayout();
+            var relativeLayoutMain = new StackLayout();
             NavigationPage.SetHasNavigationBar(this, false);
             BackgroundColor = Color.FromHex("#455A64");
             var aguarde = new Label
@@ -15,9 +15,11 @@ namespace GoMobi.Views
                 Text = "AGUARDE\n...",
                 TextColor = Color.White,
                 FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-                HorizontalTextAlignment = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand
             };
-            relativeLayoutMain.Children.Add(aguarde, Constraint.RelativeToParent((parent) => (parent.Width / 2) - (aguarde.Width / 2)), Constraint.RelativeToParent((parent) => parent.Height / 2));
+            relativeLayoutMain.Children.Add(aguarde);
 
             Content = relativeLayoutMain;
         }
