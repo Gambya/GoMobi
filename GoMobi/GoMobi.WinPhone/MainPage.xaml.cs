@@ -27,7 +27,7 @@ namespace GoMobi.WinPhone
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
-
+            
             LoadApplication(new GoMobi.App());
         }
 
