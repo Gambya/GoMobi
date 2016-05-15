@@ -13,10 +13,10 @@ namespace GoMobi.Views
             var relLayoutMain = new RelativeLayout();
             var logo = new Image
             {
-                Source = "icon.png",
+                Source = "LogoGoMobi.png",
                 Aspect = Aspect.AspectFit,
-                WidthRequest = 120,
-                HeightRequest = 120,
+                WidthRequest = 200,
+                HeightRequest = 200,
                 VerticalOptions = LayoutOptions.CenterAndExpand
             };
             var btnLoginGoogle = new Button

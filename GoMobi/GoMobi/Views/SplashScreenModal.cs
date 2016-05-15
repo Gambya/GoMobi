@@ -6,18 +6,38 @@ namespace GoMobi.Views
     {
         public SplashScreenModal()
         {
-            var relativeLayoutMain = new RelativeLayout();
+            var mainLayout = new StackLayout();
             NavigationPage.SetHasNavigationBar(this, false);
             BackgroundColor = Color.FromHex("#455A64");
+            var backTop = new Image
+            {
+                Source = "backTop.png",
+                Aspect = Aspect.AspectFit,
+                HeightRequest = 100,
+                WidthRequest = 100,
+                HorizontalOptions = LayoutOptions.End
+            };
             var logo = new Image
             {
-                Source = "icon.png",
-                Aspect = Aspect.AspectFill,
-                HeightRequest = Height / 5,
-                WidthRequest = Width / 5
+                Source = "LogoGoMobi.png",
+                Aspect = Aspect.AspectFit,
+                HeightRequest = 200,
+                WidthRequest = 200,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.CenterAndExpand
             };
-            relativeLayoutMain.Children.Add(logo, Constraint.RelativeToParent((parent) => parent.Width / 2), Constraint.RelativeToParent((parent) => parent.Height / 2));
-            Content = relativeLayoutMain;
+            var backBottom = new Image
+            {
+                Source = "backBottom.png",
+                Aspect = Aspect.AspectFit,
+                HeightRequest = 100,
+                WidthRequest = 100,
+                HorizontalOptions = LayoutOptions.Start
+            };
+            mainLayout.Children.Add(backTop);
+            mainLayout.Children.Add(logo);
+            mainLayout.Children.Add(backBottom);
+            Content = mainLayout;
         }
     }
 }

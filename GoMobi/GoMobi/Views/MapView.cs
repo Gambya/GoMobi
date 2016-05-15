@@ -9,8 +9,8 @@ namespace GoMobi.Views
     public class MapView : ContentPage
     {
         private Map map;
-        private Button btMelhora;
-        private Button btPiora;
+        private Image btMelhora;
+        private Image btPiora;
         private Position posicao = new Position(-14.235004, -51.92528);
         public MapView()
         {
@@ -54,17 +54,15 @@ namespace GoMobi.Views
                 map.Pins.Add(pin);
             };
             //Botão de adicionar acessibilidade e suas propriedades e funções como alinhamento
-            var btPlus = new Button
+            var btPlus = new Image
             {
-                Image = "cadeiranteicon32.png",
-                BackgroundColor = Color.Accent,//Color.FromHex("#2196F3"),
-
-                HorizontalOptions = LayoutOptions.Center,
-                BorderColor = Color.Black,
-                BorderWidth = 1
+                Source = "LogoGoMobi.png",
+                Aspect = Aspect.AspectFit,
+                WidthRequest = 65
             };
             relativeLayoutMain.Children.Add(btPlus, Constraint.Constant(20), Constraint.RelativeToParent((parent) => parent.Height - 70));
-            btPlus.Clicked += (sender, e) =>
+            var tappGesturePlus = new TapGestureRecognizer();
+            tappGesturePlus.Tapped += (sender, e) =>
             {
                 if (btMelhora.IsVisible || btPiora.IsVisible)
                 {
@@ -77,37 +75,38 @@ namespace GoMobi.Views
                     btMelhora.IsVisible = true;
                 }
             };
+            btPlus.GestureRecognizers.Add(tappGesturePlus);
             //Botão adicionar melhoria
-            btMelhora = new Button
+            btMelhora = new Image
             {
-                Image = "pinicon32.png",
-                BackgroundColor = Color.Green,
-                HorizontalOptions = LayoutOptions.Center,
-                BorderColor = Color.Black,
-                BorderWidth = 1,
+                Source = "btPinIconGreen.png",
+                Aspect = Aspect.AspectFit,
+                WidthRequest = 60,
                 IsVisible = false
             };
-            relativeLayoutMain.Children.Add(btMelhora, Constraint.Constant(20), Constraint.RelativeToParent((parent) => parent.Height - 130));
-            btMelhora.Clicked += async (sender, e) =>
+            relativeLayoutMain.Children.Add(btMelhora, Constraint.Constant(20), Constraint.RelativeToParent((parent) => parent.Height - 140));
+            var tappGestureMelhora = new TapGestureRecognizer();
+            tappGestureMelhora.Tapped += async (sender, e) =>
             {
                 await Navigation.PushModalAsync(new ModalRegistroMelhoria(), true);
             };
+            btMelhora.GestureRecognizers.Add(tappGestureMelhora);
 
             //Botão adicionar piora
-            btPiora = new Button
+            btPiora = new Image
             {
-                Image = "pinicon32.png",
-                BackgroundColor = Color.Maroon,
-                HorizontalOptions = LayoutOptions.Center,
-                BorderColor = Color.Black,
-                BorderWidth = 1,
+                Source = "btPinIconRed.png",
+                Aspect = Aspect.AspectFit,
+                WidthRequest = 60,
                 IsVisible = false
             };
-            relativeLayoutMain.Children.Add(btPiora, Constraint.Constant(20), Constraint.RelativeToParent((parent) => parent.Height - 190));
-            btPiora.Clicked += async (sender, e) =>
+            relativeLayoutMain.Children.Add(btPiora, Constraint.Constant(20), Constraint.RelativeToParent((parent) => parent.Height - 200));
+            var tappGesturePiora = new TapGestureRecognizer();
+            tappGesturePiora.Tapped += async (sender, e) =>
             {
                 await Navigation.PushModalAsync(new ModalRegistroNegativo(), true);
             };
+            btPiora.GestureRecognizers.Add(tappGesturePiora);
 
             //btLocator.Clicked += async (sender, e) =>
             //{
@@ -177,7 +176,7 @@ namespace GoMobi.Views
             //Task<Position> pos = GetPosition();
             //Position position = await pos;
             if (map.Pins.Count > 0) return;
-            var position = new Position((double) Application.Current.Properties["latitude"], (double) Application.Current.Properties["longitude"]);
+            var position = new Position((double)Application.Current.Properties["latitude"], (double)Application.Current.Properties["longitude"]);
             map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(0.3)));
             map.Pins.Clear();
             var pin = new Pin
